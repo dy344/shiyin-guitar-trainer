@@ -1,0 +1,62 @@
+{
+  "name": "guitar-trainer",
+  "productName": "拾音",
+  "main": "electron/main.cjs",
+  "private": true,
+  "version": "0.8.0",
+  "description": "本地吉他音准检测与单声部曲谱练习",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "desktop": "npm run build && electron .",
+    "test:desktop": "npm run build && electron electron/smoke.cjs",
+    "test:scores": "npm run build && electron electron/score-test.cjs",
+    "test:practice": "npm run build && electron electron/practice-test.cjs",
+    "test:v03": "npm run build && electron electron/v03-test.cjs",
+    "test:v04": "npm run build && electron electron/v04-test.cjs",
+    "test:v05": "npm run build && electron electron/v05-test.cjs",
+    "test:v06": "npm run build && electron electron/v06-test.cjs",
+    "test:v07": "npm run build && electron electron/v07-test.cjs",
+    "test:v08": "npm run build && electron electron/v08-test.cjs",
+    "test:unit": "node --experimental-strip-types --test tests/pitch.test.ts tests/practice.test.ts tests/playback.test.ts tests/history.test.ts tests/editor.test.ts tests/backup.test.ts tests/transcription.test.ts tests/mxl.test.ts tests/scoreLayout.test.ts tests/resources.test.ts tests/study.test.ts tests/external.test.cjs tests/videoLimits.test.ts",
+    "package:win": "npm run build && electron-builder --win --dir",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview"
+  },
+  "build": {
+    "appId": "local.shiyin.guitar",
+    "productName": "拾音",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/main.cjs",
+      "electron/external.cjs",
+      "package.json"
+    ],
+    "win": {
+      "signAndEditExecutable": false
+    },
+    "electronDist": "node_modules/electron/dist"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "lucide-react": "^1.47.0",
+    "mediabunny": "1.61.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.3",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.7",
+    "@vitejs/plugin-react": "^6.1.1",
+    "electron": "^44.4.3",
+    "electron-builder": "^26.15.3",
+    "oxlint": "^1.81.0",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  }
+}
